@@ -3,6 +3,7 @@
   <groupId>ProjetoClinicaMedica</groupId>
   <artifactId>ProjetoClinicaMedica</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -14,6 +15,19 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-    </plugins>
+    </plugins>	
   </build>
+  <dependencies>
+	  <dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.15</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>4.0.1</version>
+	  </dependency>
+  </dependencies>
+  
 </project>
