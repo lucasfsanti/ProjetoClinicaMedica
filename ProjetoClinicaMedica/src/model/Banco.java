@@ -10,10 +10,10 @@ import java.sql.Statement;
 /**
  * Classe criada na disciplina de POO (2019/1).
  * 
- * Representa um banco de dados que se conecta à  aplicação
+ * Representa um banco de dados que se conecta à aplicação
  * 
  * Encapsula métodos da API JDBC, com a definição, criação e fechamento de
- * conexções à  bancos de dados relacionais
+ * conexões à bancos de dados relacionais
  * 
  * @author Adriano de Melo Vilmar César Pereira Júnior (continuação em
  *         Desenvolvimento Desktop 2018/2)
@@ -45,7 +45,7 @@ import java.sql.Statement;
  *         corretamente, ajudam a evitar <b>ataques de Injeção de SQL</b>.
  * 
  *         Note que para isso é preciso que os parâmetros da consulta sejam
- *         atribuí­dos através dos métodos setInt(), setString(), etc. presentes
+ *         atribuídos através dos métodos setInt(), setString(), etc. presentes
  *         na interface PreparedStatement e não por concatenação de strings.
  * 
  *         Para uma consulta que vai ser executada poucas vezes e não requer
@@ -58,14 +58,14 @@ import java.sql.Statement;
 public class Banco {
 
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	private static final String BANCO = "DBCLINICAMEDICA";
+	private static final String BANCO = "dbfoodtruck";
 	private static final String CONEXAO = "jdbc:mysql://localhost:3306/" + BANCO
 			+ "?useTimezone=true&serverTimezone=UTC";
 	private static final String USUARIO = "root";
 	private static final String SENHA = "";
 
-	public static final int CODIGO_RETORNO_ERRO = 0;
-	public static final int CODIGO_RETORNO_SUCESSO = 1;
+	public static final int CODIGO_RETORNO_ERRO_EXCLUSAO = 0;
+	public static final int CODIGO_RETORNO_SUCESSO_EXCLUSAO = 1;
 
 	/**
 	 * Estabelece a conexão JBDC considerando as configurações da classe Banco.
@@ -169,6 +169,37 @@ public class Banco {
 			return stmt;
 		} catch (Exception e) {
 			System.out.println("Erro ao obter o PreparedStatement. Causa: " + e.getMessage());
+			return null;
+		}
+	}
+
+	/**
+	 * 
+	 * Solicita um objeto PreparedStatement para uma conexão. Este objeto serve para
+	 * executar as operações SQL.
+	 * 
+	 * @param conn uma conexão anteriormente criada.
+	 * @return stmt um objeto do tipo PreparedStatement
+	 * 
+	 * @throws SQLException
+	 * 
+	 */
+	public static PreparedStatement getPreparedStatement(Connection conn, String sql) {
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			return stmt;
+		} catch (Exception e) {
+			System.out.println("Erro ao obter o PreparedStatement.");
+			return null;
+		}
+	}
+
+	public static PreparedStatement getPreparedStatement(Connection conn, String sql, int tipoRetorno) {
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql, tipoRetorno);
+			return stmt;
+		} catch (Exception e) {
+			System.out.println("Erro ao obter o PreparedStatement.");
 			return null;
 		}
 	}
