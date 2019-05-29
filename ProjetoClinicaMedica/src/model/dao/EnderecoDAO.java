@@ -1,4 +1,4 @@
-package model.dao;
+package src.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.Banco;
-import model.vo.Endereco;
+import src.model.Banco;
+import src.model.vo.Endereco;
+
 
 public class EnderecoDAO {
 
@@ -33,7 +34,7 @@ public class EnderecoDAO {
 				novoId = resultado.getInt(1);
 			}
 		} catch (SQLException e) {
-			System.out.println("Erro ao cadastrar endereço: \n " + e.getMessage());
+			System.out.println("Erro ao cadastrar endereï¿½o: \n " + e.getMessage());
 		} finally {
 			Banco.closePreparedStatement(prepStmt);
 			Banco.closeConnection(conn);

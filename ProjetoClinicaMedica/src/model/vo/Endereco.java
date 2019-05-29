@@ -1,4 +1,4 @@
-package model.vo;
+package src.model.vo;
 
 public class Endereco {
 
