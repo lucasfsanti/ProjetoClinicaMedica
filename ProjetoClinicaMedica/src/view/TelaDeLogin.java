@@ -2,17 +2,22 @@ package view;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import controller.MedicoController;
+
 public class TelaDeLogin {
 
-	private JFrame frmClinicaMdica;
+	private JFrame frmClinicaMedica;
 	private JPasswordField passwordField;
 	private JTextField txtUsuario;
 
@@ -24,7 +29,7 @@ public class TelaDeLogin {
 			public void run() {
 				try {
 					TelaDeLogin window = new TelaDeLogin();
-					window.frmClinicaMdica.setVisible(true);
+					window.frmClinicaMedica.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,52 +48,66 @@ public class TelaDeLogin {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmClinicaMdica = new JFrame();
-		frmClinicaMdica.setTitle("Clinica M\u00E9dica");
-		frmClinicaMdica.setBounds(100, 100, 450, 300);
-		frmClinicaMdica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmClinicaMedica = new JFrame();
+		frmClinicaMedica.setTitle("Clinica M\u00E9dica");
+		frmClinicaMedica.setBounds(100, 100, 450, 300);
+		frmClinicaMedica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		SpringLayout springLayout = new SpringLayout();
-		frmClinicaMdica.getContentPane().setLayout(springLayout);
+		frmClinicaMedica.getContentPane().setLayout(springLayout);
 
 		JLabel lblUsuario = new JLabel("Usu\u00E1rio:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		springLayout.putConstraint(SpringLayout.NORTH, lblUsuario, 71, SpringLayout.NORTH,
-				frmClinicaMdica.getContentPane());
+				frmClinicaMedica.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, lblUsuario, 183, SpringLayout.WEST,
-				frmClinicaMdica.getContentPane());
-		frmClinicaMdica.getContentPane().add(lblUsuario);
+				frmClinicaMedica.getContentPane());
+		frmClinicaMedica.getContentPane().add(lblUsuario);
 
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		springLayout.putConstraint(SpringLayout.WEST, lblUsuario, 0, SpringLayout.WEST, lblSenha);
-		frmClinicaMdica.getContentPane().add(lblSenha);
+		frmClinicaMedica.getContentPane().add(lblSenha);
 
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		springLayout.putConstraint(SpringLayout.NORTH, lblSenha, 3, SpringLayout.NORTH, passwordField);
 		springLayout.putConstraint(SpringLayout.EAST, passwordField, -100, SpringLayout.EAST,
-				frmClinicaMdica.getContentPane());
+				frmClinicaMedica.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, lblSenha, -58, SpringLayout.WEST, passwordField);
-		frmClinicaMdica.getContentPane().add(passwordField);
+		frmClinicaMedica.getContentPane().add(passwordField);
 
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		springLayout.putConstraint(SpringLayout.NORTH, passwordField, -100, SpringLayout.SOUTH, btnLogin);
 		springLayout.putConstraint(SpringLayout.WEST, passwordField, -60, SpringLayout.EAST, btnLogin);
 		springLayout.putConstraint(SpringLayout.WEST, btnLogin, 150, SpringLayout.WEST,
-				frmClinicaMdica.getContentPane());
+				frmClinicaMedica.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnLogin, -50, SpringLayout.SOUTH,
-				frmClinicaMdica.getContentPane());
+				frmClinicaMedica.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, btnLogin, -150, SpringLayout.EAST,
-				frmClinicaMdica.getContentPane());
-		frmClinicaMdica.getContentPane().add(btnLogin);
+				frmClinicaMedica.getContentPane());
+		frmClinicaMedica.getContentPane().add(btnLogin);
+		btnLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				MedicoController controller = new MedicoController();
+				String usuario = txtUsuario.getText();
+				String senha = new String(passwordField.getPassword());
+				if (controller.login(usuario, senha)) {
+					JOptionPane.showMessageDialog(frmClinicaMedica, "Login efetuado com sucesso!");
+					// TODO chamar tela do médico que efetuou login
+				} else {
+					JOptionPane.showMessageDialog(frmClinicaMedica, "Usuario e/ou senha inválidos.");
+				}
+			}
+		});
 
 		txtUsuario = new JTextField();
 		txtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		springLayout.putConstraint(SpringLayout.WEST, txtUsuario, 39, SpringLayout.EAST, lblUsuario);
 		springLayout.putConstraint(SpringLayout.SOUTH, txtUsuario, -16, SpringLayout.NORTH, passwordField);
 		springLayout.putConstraint(SpringLayout.EAST, txtUsuario, 149, SpringLayout.EAST, lblUsuario);
-		frmClinicaMdica.getContentPane().add(txtUsuario);
+		frmClinicaMedica.getContentPane().add(txtUsuario);
 		txtUsuario.setColumns(10);
 	}
 }

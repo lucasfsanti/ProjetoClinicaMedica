@@ -28,9 +28,9 @@ public class EnderecoDAO {
 
 			prepStmt.execute();
 
-			ResultSet resultado = prepStmt.getGeneratedKeys();
-			if (resultado.next()) {
-				novoId = resultado.getInt(1);
+			ResultSet generatedKeys = prepStmt.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				novoId = generatedKeys.getInt(1);
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro ao cadastrar endereço: \n " + e.getMessage());
