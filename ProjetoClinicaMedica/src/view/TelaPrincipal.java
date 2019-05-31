@@ -220,10 +220,10 @@ public class TelaPrincipal extends JFrame {
 		desktopPane.setLayout(new MigLayout("", "[grow,fill]", "[grow,fill]"));
 	}
 
-	private void adicionarPainel(JPanel painel) {
+	private void adicionarPainel(JInternalFrame janelinha) {
 
 		//TODO continuar
-		if (painel == null) {
+		if (janelinha == null) {
 			painelListagemCliente = new PainelListagemCliente();
 			getContentPane().add(painelListagemCliente);
 			painelListagemCliente.setVisible(true);

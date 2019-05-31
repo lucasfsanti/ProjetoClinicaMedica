@@ -55,8 +55,8 @@ public class TelaInternaCadastroCliente extends JInternalFrame {
 		setClosable(true);
 		setResizable(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 527, 380);
-		getContentPane().setLayout(new MigLayout("", "[61.00px][102px,grow][97px][130px,grow]", "[25.00,grow][13.00,grow][20px,grow][20px,grow][20.00,grow][13.00,grow][25.00,grow][13.00,grow][20px,grow][20px,grow][20px,grow][13.00,grow][25.00,grow][20px,grow][13.00][20px,grow]"));
+		setBounds(100, 100, 717, 650);
+		getContentPane().setLayout(new MigLayout("", "[61.00px][102px,grow][97px][130px,grow]", "[25.00,grow][20px,grow][20px,grow][20.00,grow][25.00,grow][20px,grow][20px,grow][20px,grow][25.00,grow][20px,grow][13.00][20px,grow]"));
 		initialize();
 	}
 
@@ -72,124 +72,137 @@ public class TelaInternaCadastroCliente extends JInternalFrame {
 		}
 
 		JLabel lblInformaesPessoais = new JLabel("Informa\u00E7\u00F5es Pessoais");
-		lblInformaesPessoais.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblInformaesPessoais.setFont(new Font("Verdana", Font.BOLD, 14));
 		getContentPane().add(lblInformaesPessoais, "cell 0 0 4 1,alignx center,growy");
 
 		JLabel lblNome = new JLabel("Nome:");
-		getContentPane().add(lblNome, "cell 0 2,alignx left,aligny center");
+		lblNome.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblNome, "cell 0 1,alignx left,aligny center");
 
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		getContentPane().add(lblSobrenome, "cell 2 2,alignx right,growy");
+		lblSobrenome.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblSobrenome, "cell 2 1,alignx right,growy");
 
 		JLabel lblCPF_CNPJ = new JLabel("CPF/CNPJ:");
-		getContentPane().add(lblCPF_CNPJ, "cell 0 4,alignx left,aligny center");
+		lblCPF_CNPJ.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblCPF_CNPJ, "cell 0 3,alignx left,aligny center");
 
 		JLabel lblDataDeNacimento = new JLabel("Data de Nacimento:");
-		getContentPane().add(lblDataDeNacimento, "cell 2 4,alignx right,aligny center");
+		lblDataDeNacimento.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblDataDeNacimento, "cell 2 3,alignx right,aligny center");
 
 		JLabel lblEndereo = new JLabel("Endere\u00E7o");
-		lblEndereo.setFont(new Font("Verdana", Font.PLAIN, 14));
-		getContentPane().add(lblEndereo, "cell 0 6 4 1,alignx center,growy");
+		lblEndereo.setFont(new Font("Verdana", Font.BOLD, 14));
+		getContentPane().add(lblEndereo, "cell 0 4 4 1,alignx center,growy");
 
 		JLabel lblCidade = new JLabel("Cidade:");
-		getContentPane().add(lblCidade, "cell 0 8,alignx left,aligny center");
+		lblCidade.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblCidade, "cell 0 5,alignx left,aligny center");
 
 		txtCidade = new JTextField();
 		txtCidade.setColumns(10);
-		getContentPane().add(txtCidade, "cell 1 8,growx");
+		getContentPane().add(txtCidade, "cell 1 5,grow");
 
 		JLabel lblRua = new JLabel("Rua:");
-		getContentPane().add(lblRua, "cell 2 8,alignx right,aligny center");
+		lblRua.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblRua, "cell 2 5,alignx right,aligny center");
 
 		txtRuaEndereco = new JTextField();
-		getContentPane().add(txtRuaEndereco, "cell 3 8,growx,aligny top");
+		getContentPane().add(txtRuaEndereco, "cell 3 5,grow");
 		txtRuaEndereco.setColumns(10);
 
 		JLabel lblBairro = new JLabel("Bairro:");
-		getContentPane().add(lblBairro, "cell 0 9,alignx left,aligny center");
+		lblBairro.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblBairro, "cell 0 6,alignx left,aligny center");
 
 
 		txtBairroEndereco = new JTextField();
-		getContentPane().add(txtBairroEndereco, "cell 1 9,growx,aligny top");
+		getContentPane().add(txtBairroEndereco, "cell 1 6,grow");
 		txtBairroEndereco.setColumns(10);
 
 		JLabel lblNumero = new JLabel("Numero:");
-		getContentPane().add(lblNumero, "cell 2 9,alignx right,aligny center");
+		lblNumero.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblNumero, "cell 2 6,alignx right,aligny center");
 
 		JLabel lblComplemento = new JLabel("Complemento:");
-		getContentPane().add(lblComplemento, "cell 0 10,alignx right,aligny center");
+		lblComplemento.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblComplemento, "cell 0 7,alignx right,aligny center");
 
 		txtComplementoEndereco = new JTextField();
-		getContentPane().add(txtComplementoEndereco, "cell 1 10,growx,aligny top");
+		getContentPane().add(txtComplementoEndereco, "cell 1 7,grow");
 		txtComplementoEndereco.setColumns(10);
 
 		JLabel lblContato = new JLabel("Contato");
-		lblContato.setFont(new Font("Verdana", Font.PLAIN, 14));
-		getContentPane().add(lblContato, "cell 0 12 4 1,alignx center,growy");
+		lblContato.setFont(new Font("Verdana", Font.BOLD, 14));
+		getContentPane().add(lblContato, "cell 0 8 4 1,alignx center,growy");
 
 		JLabel lblNumeroTelefone = new JLabel("Telefone:");
-		getContentPane().add(lblNumeroTelefone, "cell 0 13,alignx left,aligny center");
+		lblNumeroTelefone.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblNumeroTelefone, "cell 0 9,alignx left,aligny center");
 
 		JLabel lblEmail = new JLabel("E-Mail:");
-		getContentPane().add(lblEmail, "cell 2 13,alignx right,aligny center");
+		lblEmail.setFont(new Font("Verdana", Font.PLAIN, 14));
+		getContentPane().add(lblEmail, "cell 2 9,alignx right,aligny center");
 
 		txtNome = new JTextField();
-		getContentPane().add(txtNome, "cell 1 2,growx,aligny top");
+		getContentPane().add(txtNome, "cell 1 1,grow");
 		txtNome.setColumns(10);
 
 		txtSobrenome = new JTextField();
-		getContentPane().add(txtSobrenome, "cell 3 2,growx,aligny top");
+		getContentPane().add(txtSobrenome, "cell 3 1,grow");
 		txtSobrenome.setColumns(10);
 
 		txtNumeroEndereco = new JTextField();
-		getContentPane().add(txtNumeroEndereco, "cell 3 9,growx,aligny top");
+		getContentPane().add(txtNumeroEndereco, "cell 3 6,grow");
 		txtNumeroEndereco.setColumns(10);
 
 		txtEmail = new JTextField();
-		getContentPane().add(txtEmail, "cell 3 13,growx,aligny top");
+		getContentPane().add(txtEmail, "cell 3 9,grow");
 		txtEmail.setColumns(10);
 
 		JRadioButton rbCNPJ = new JRadioButton("CPNJ");
+		rbCNPJ.setFont(new Font("Verdana", Font.PLAIN, 14));
 		rbCNPJ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				selecionarCNPJ();
 			}
 		});
 		JRadioButton rbCPF = new JRadioButton("CPF");
+		rbCPF.setFont(new Font("Verdana", Font.PLAIN, 14));
 		rbCPF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selecionarCPF();
 			}
 		});
-		getContentPane().add(rbCNPJ, "cell 1 3,alignx center,aligny top");
-		getContentPane().add(rbCPF, "cell 0 3,alignx right,aligny top");
+		getContentPane().add(rbCNPJ, "cell 1 2,alignx center,growy");
+		getContentPane().add(rbCPF, "cell 0 2,alignx center,growy");
 
 		ButtonGroup group = new ButtonGroup();
 		group.add(rbCNPJ);
 		group.add(rbCPF);
 
 		ftfCPF = new JFormattedTextField(mascaraCpf);
-		getContentPane().add(ftfCPF, "cell 1 4,growx,aligny top");
+		getContentPane().add(ftfCPF, "cell 1 3,grow");
 		ftfCPF.setVisible(false);
 		
 		ftfCNPJ = new JFormattedTextField(mascaraCnpj);
-		getContentPane().add(ftfCNPJ, "cell 1 4,growx,aligny top");
+		getContentPane().add(ftfCNPJ, "cell 1 3,grow");
 		ftfCNPJ.setVisible(false);
 
 		JFormattedTextField ftfData = new JFormattedTextField(mascaraData);
-		getContentPane().add(ftfData, "cell 3 4,growx,aligny top");
+		getContentPane().add(ftfData, "cell 3 3,grow");
 
 		JFormattedTextField ftfTelefone = new JFormattedTextField(mascaraTelefone);
-		getContentPane().add(ftfTelefone, "cell 1 13,growx,aligny top");
+		getContentPane().add(ftfTelefone, "cell 1 9,grow");
 
 		JButton btnCadastrar = new JButton("Cadastrar");
-		getContentPane().add(btnCadastrar, "cell 1 15,grow");
+		getContentPane().add(btnCadastrar, "cell 1 11,grow");
 		btnCadastrar.addActionListener(e -> {
 
 		});
 
 		JButton btnLimpar = new JButton("Limpar Campos");
-		getContentPane().add(btnLimpar, "cell 3 15,grow");
+		getContentPane().add(btnLimpar, "cell 3 11,grow");
 		btnLimpar.addActionListener(e -> {
 			
 			// Info Pessoal
@@ -216,14 +229,14 @@ public class TelaInternaCadastroCliente extends JInternalFrame {
 			
 		});
 
-		try {
+		/*try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/aaaa");
 			Date data = sdf.parse(ftfData.getText());
 		} catch (ParseException e) {
 			e.getMessage();
 			System.out.println(e);
 			System.out.println("2� Try/Catch. Causa: " + e.getMessage() );
-		}
+		}*/
 	}
 
 	protected void selecionarCPF() {
