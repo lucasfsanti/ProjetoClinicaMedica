@@ -1,6 +1,6 @@
-package src.controller;
+package controller;
 
-import src.model.bo.MedicoBO;
+import model.bo.MedicoBO;
 
 public class MedicoController {
 

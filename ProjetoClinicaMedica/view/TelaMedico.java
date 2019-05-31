@@ -1,4 +1,4 @@
-package src.view;
+package view;
 
 import java.awt.EventQueue;
 
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.KeyStroke;
 
-import src.view.cliente.TelaInternaCadastroCliente;
+import view.cliente.TelaInternaCadastroCliente;
 
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;

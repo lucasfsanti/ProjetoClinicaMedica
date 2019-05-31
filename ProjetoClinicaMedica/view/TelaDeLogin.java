@@ -1,4 +1,4 @@
-package src.view;
+package view;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import src.controller.MedicoController;
+import controller.MedicoController;
 
 public class TelaDeLogin extends JFrame{
 

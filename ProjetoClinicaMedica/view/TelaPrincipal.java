@@ -1,4 +1,4 @@
-package src.view;
+package view;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -26,10 +26,10 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 import net.miginfocom.swing.MigLayout;
-import src.view.cliente.PainelListagemCliente;
-import src.view.cliente.TelaInternaAtualizarCliente;
-import src.view.cliente.TelaInternaCadastroCliente;
-import src.view.cliente.TelaInternaRelatorioCliente;
+import view.cliente.PainelListagemCliente;
+import view.cliente.TelaInternaAtualizarCliente;
+import view.cliente.TelaInternaCadastroCliente;
+import view.cliente.TelaInternaRelatorioCliente;
 
 public class TelaPrincipal extends JFrame {
 

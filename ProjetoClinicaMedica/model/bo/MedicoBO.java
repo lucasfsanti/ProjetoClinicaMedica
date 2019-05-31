@@ -1,6 +1,6 @@
-package src.model.bo;
+package model.bo;
 
-import src.model.dao.MedicoDAO;
+import model.dao.MedicoDAO;
 
 public class MedicoBO {
 

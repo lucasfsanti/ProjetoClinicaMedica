@@ -1,4 +1,4 @@
-package src.model.dao;
+package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import src.model.Banco;
-import src.model.vo.Medico;
+import model.Banco;
+import model.vo.Medico;
 
 public class MedicoDAO {
 

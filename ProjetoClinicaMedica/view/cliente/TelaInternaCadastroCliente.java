@@ -1,4 +1,4 @@
-package src.view.cliente;
+package view.cliente;
 
 import java.awt.EventQueue;
 import java.awt.Font;

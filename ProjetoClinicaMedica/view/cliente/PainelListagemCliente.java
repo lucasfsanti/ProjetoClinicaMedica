@@ -1,4 +1,4 @@
-package src.view.cliente;
+package view.cliente;
 
 
 import javax.swing.JButton;

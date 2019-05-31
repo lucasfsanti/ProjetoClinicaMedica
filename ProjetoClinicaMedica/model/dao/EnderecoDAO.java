@@ -1,4 +1,4 @@
-package src.model.dao;
+package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import src.model.Banco;
-import src.model.vo.Endereco;
+import model.Banco;
+import model.vo.Endereco;
 
 
 public class EnderecoDAO {

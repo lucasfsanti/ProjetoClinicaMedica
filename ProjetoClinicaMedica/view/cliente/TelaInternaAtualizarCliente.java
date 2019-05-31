@@ -1,4 +1,4 @@
-package src.view.cliente;
+package view.cliente;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
