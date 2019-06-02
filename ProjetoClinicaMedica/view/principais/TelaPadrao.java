@@ -3,6 +3,7 @@ package view.principais;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,8 +11,10 @@ import java.awt.Component;
 
 import javax.swing.UIManager;
 
-import view.normal.TelaAgendaMedico;
-import view.normal.TelaListarMedicos;
+import view.cliente.TelaInternaAtualizarCliente;
+import view.cliente.TelaInternaCadastroCliente;
+import view.normal.TelaInternaAgendaMedico;
+import view.normal.TelaInternaListarMedicos;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -42,6 +45,8 @@ public class TelaPadrao extends JFrame{
 	public TelaPadrao() {
 		setBounds(100, 100, 900, 719);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		new JInternalFrame().setClosable(true);
+		
 
 		initialize();
 	}
@@ -52,6 +57,7 @@ public class TelaPadrao extends JFrame{
 		getContentPane().add(menuBar, BorderLayout.NORTH);
 
 		JMenu mnMedico = new JMenu("Medico");
+		mnMedico.setIcon(new ImageIcon(TelaPadrao.class.getResource("/icones/icons8-сharlie-сhaplin.png")));
 		menuBar.add(mnMedico);
 
 		JMenuItem mntmCadastrarAgenda = new JMenuItem("Cadastrar Agenda");
@@ -59,7 +65,7 @@ public class TelaPadrao extends JFrame{
 		mntmCadastrarAgenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				TelaAgendaMedico agendaMedico = new TelaAgendaMedico();
+				TelaInternaAgendaMedico agendaMedico = new TelaInternaAgendaMedico();
 				getContentPane().add(agendaMedico);
 				agendaMedico.setVisible(true);
 				agendaMedico.show();
@@ -69,10 +75,11 @@ public class TelaPadrao extends JFrame{
 		mnMedico.add(mntmCadastrarAgenda);
 
 		JMenuItem mntmMedicosAtivos = new JMenuItem("Medicos Ativos");
+		mntmMedicosAtivos.setIcon(new ImageIcon(TelaPadrao.class.getResource("/icones/icons8-treinamento.png")));
 		mntmMedicosAtivos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				TelaListarMedicos listarMedico = new TelaListarMedicos();
+				TelaInternaListarMedicos listarMedico = new TelaInternaListarMedicos();
 				getContentPane().add(listarMedico);
 				listarMedico.setVisible(true);
 				listarMedico.show();
@@ -82,44 +89,61 @@ public class TelaPadrao extends JFrame{
 		mnMedico.add(mntmMedicosAtivos);
 
 		JMenuItem mntmListarAgendas = new JMenuItem("Listar Agendas");
+		mntmListarAgendas.setIcon(new ImageIcon(TelaPadrao.class.getResource("/javax/swing/plaf/basic/icons/image-delayed.png")));
 		mnMedico.add(mntmListarAgendas);
 
 		JMenu mnCliente = new JMenu("Cliente");
+		mnCliente.setIcon(new ImageIcon(TelaPadrao.class.getResource("/icones/icons8-adicionar-usuário-masculino.png")));
 		menuBar.add(mnCliente);
 
 		JMenuItem mntmCadastrarDados = new JMenuItem("Cadastrar Dados");
+		mntmCadastrarDados.setIcon(new ImageIcon(TelaPadrao.class.getResource("/icones/icons8-adicionar-usuário-masculino.png")));
+		mnCliente.add(mntmCadastrarDados);
 		mntmCadastrarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				TelaInternaCadastroCliente janelinhaCadastroCliente = new TelaInternaCadastroCliente();
+				getContentPane().add(janelinhaCadastroCliente);
+				janelinhaCadastroCliente.setVisible(true);
+				janelinhaCadastroCliente.show();
+				
 			}
 		});
-		mnCliente.add(mntmCadastrarDados);
 
 		JMenuItem mntmAlterarDados = new JMenuItem("Alterar Dados");
+		mntmAlterarDados.setIcon(new ImageIcon(TelaPadrao.class.getResource("/icones/icons8-adicionar-ao-banco-de-dados.png")));
+		mnCliente.add(mntmAlterarDados);
 		mntmAlterarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				TelaInternaAtualizarCliente janelinhaAtualizarCliente = new TelaInternaAtualizarCliente();
+				getContentPane().add(janelinhaAtualizarCliente);
+				janelinhaAtualizarCliente.setVisible(true);
+				janelinhaAtualizarCliente.show();
+				
 			}
 		});
-		mnCliente.add(mntmAlterarDados);
 
 		JMenuItem mntmCadastrarConsulta = new JMenuItem("Cadastrar Consulta");
 		mnCliente.add(mntmCadastrarConsulta);
 
 		JMenu mnProdutos = new JMenu("Produtos");
+		mnProdutos.setIcon(new ImageIcon(TelaPadrao.class.getResource("/icones/icons8-comprar.png")));
 		menuBar.add(mnProdutos);
 
 		JMenuItem mntmListarProduto = new JMenuItem("Listar Produtos");
+		mnProdutos.add(mntmListarProduto);
 		mntmListarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		mnProdutos.add(mntmListarProduto);
 
 		JMenuItem mntmSoliciarProduto = new JMenuItem("Soliciar Produtos");
+		mnProdutos.add(mntmSoliciarProduto);
 		mntmSoliciarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		mnProdutos.add(mntmSoliciarProduto);
 
 
 

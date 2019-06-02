@@ -26,16 +26,17 @@ import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import net.miginfocom.swing.MigLayout;
 
-public class TelaListarMedicos extends JInternalFrame{
+public class TelaInternaListarMedicos extends JInternalFrame{
 	private JTextField txtNome;
 	private JTextField txtCRM;
 	private JTable table;
+	private JComboBox cbEspecializacao;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaListarMedicos window = new TelaListarMedicos();
+					TelaInternaListarMedicos window = new TelaInternaListarMedicos();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +45,9 @@ public class TelaListarMedicos extends JInternalFrame{
 		});
 	}
 
-	public TelaListarMedicos() {
+	public TelaInternaListarMedicos() {
+		setClosable(true);
+		setResizable(true);
 		setBounds(100, 100, 961, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -54,7 +57,7 @@ public class TelaListarMedicos extends JInternalFrame{
 	private void initialize() {
 
 		JLabel lblCadastrarMedico = new JLabel("Cadastrar Medico");
-		lblCadastrarMedico.setIcon(new ImageIcon(TelaListarMedicos.class.getResource("/icones/icons8-adicionar-usuário-masculino.png")));
+		lblCadastrarMedico.setIcon(new ImageIcon(TelaInternaListarMedicos.class.getResource("/icones/icons8-adicionar-usuário-masculino.png")));
 		lblCadastrarMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -86,7 +89,7 @@ public class TelaListarMedicos extends JInternalFrame{
 		txtCRM.setColumns(10);
 		getContentPane().add(txtCRM, "cell 3 3 2 1,grow");
 
-		JComboBox cbEspecializacao = new JComboBox();
+		cbEspecializacao = new JComboBox();
 		getContentPane().add(cbEspecializacao, "cell 3 4 2 1,grow");
 
 		JButton btnPesquisar = new JButton("Pesquisar");

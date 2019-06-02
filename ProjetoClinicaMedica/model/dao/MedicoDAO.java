@@ -27,7 +27,7 @@ public class MedicoDAO {
 			prepStmt.setString(6, medicoVO.getEmail());
 			prepStmt.setString(7, medicoVO.getCrm());
 			prepStmt.setString(8, medicoVO.getEspecialidade());
-			prepStmt.setString(9, medicoVO.getUsuario());
+			//prepStmt.setString(9, medicoVO.getUsuario());
 			prepStmt.setString(10, medicoVO.getSenha());
 			prepStmt.setBoolean(11, medicoVO.isAdmin());
 
@@ -64,7 +64,7 @@ public class MedicoDAO {
 			prepStmt.setString(6, medicoVO.getEmail());
 			prepStmt.setString(7, medicoVO.getCrm());
 			prepStmt.setString(8, medicoVO.getEspecialidade());
-			prepStmt.setString(9, medicoVO.getUsuario());
+			//prepStmt.setString(9, medicoVO.getUsuario());
 			prepStmt.setString(10, medicoVO.getSenha());
 			prepStmt.setBoolean(11, medicoVO.isAdmin());
 			prepStmt.setInt(12, medicoVO.getIdMedico());

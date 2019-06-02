@@ -11,11 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.JButton;
 
-public class TelaAgendaMedico extends JInternalFrame {
+public class TelaInternaAgendaMedico extends JInternalFrame {
 	
 	 private DefaultStyledDocument doc;
 
-	private static TelaAgendaMedico window;
+	private static TelaInternaAgendaMedico window;
 	private JTextField textMedico;
 	private JTextField textAgenda;
 	private JTextField textTelefone;
@@ -26,7 +26,7 @@ public class TelaAgendaMedico extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					window = new TelaAgendaMedico();
+					window = new TelaInternaAgendaMedico();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class TelaAgendaMedico extends JInternalFrame {
 		});
 	}
 
-	public TelaAgendaMedico() {
+	public TelaInternaAgendaMedico() {
 		setClosable(true);
 		setResizable(true);
 		setBounds(100, 100, 763, 605);

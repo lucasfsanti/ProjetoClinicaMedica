@@ -22,9 +22,11 @@ import com.toedter.calendar.JDateChooser;
 import controller.MedicoController;
 import model.vo.MedicoVO;
 import net.miginfocom.swing.MigLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaMedico extends JFrame{
-	
+
 	private JTable table;
 	private MedicoController controller;
 	private Date data;
@@ -43,10 +45,11 @@ public class TelaMedico extends JFrame{
 	}
 
 	public TelaMedico() {
+		setTitle("Tela Médico");
 		setResizable(true);
 		setBounds(100, 100, 821, 609);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new MigLayout("", "[][grow][grow][grow][grow][grow][grow,fill][grow][grow][grow][grow][grow][]", "[grow][grow][grow][grow][grow,fill][grow][grow][grow][grow]"));
+		getContentPane().setLayout(new MigLayout("", "[][grow,fill][grow,fill][grow,fill][]", "[grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow]"));
 		initialize();
 	}
 
@@ -54,21 +57,13 @@ public class TelaMedico extends JFrame{
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenuItem mntmConsultarPaciente = new JMenuItem("Consultar Paciente");
-		mntmConsultarPaciente.setFont(new Font("Arial", Font.BOLD, 12));
-		mntmConsultarPaciente.setIcon(new ImageIcon(TelaMedico.class.getResource("/icones/icons8-gerente-de-informações-do-cliente.png")));
-		mntmConsultarPaciente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
-		menuBar.add(mntmConsultarPaciente);
-		mntmConsultarPaciente.addActionListener(e -> {
-
-		});
-
 		JMenuItem mntmCadastrarProndutario = new JMenuItem("Cadastrar Prontuario");
 		mntmCadastrarProndutario.setFont(new Font("Arial", Font.BOLD, 12));
 		mntmCadastrarProndutario.setIcon(new ImageIcon(TelaMedico.class.getResource("/icones/icons8-adicionar-usuário-masculino.png")));
-		mntmCadastrarProndutario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0));
+		mntmCadastrarProndutario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
 		menuBar.add(mntmCadastrarProndutario);
 		mntmCadastrarProndutario.addActionListener(e -> {
+
 
 		});
 
@@ -77,50 +72,63 @@ public class TelaMedico extends JFrame{
 		mntmImprimir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
 		mntmImprimir.setIcon(new ImageIcon(TelaMedico.class.getResource("/icones/icons8-imprimir-arquivo.png")));
 		menuBar.add(mntmImprimir);
-		
+
 
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setToolTipText("Selecione a Data para Consulta");
-		getContentPane().add(dateChooser, "cell 2 0 4 1,grow");
+		getContentPane().add(dateChooser, "cell 1 0 2 1,grow");
 
 		JButton btnPesquisarAgenda = new JButton("Pesquisar Agenda");
-		getContentPane().add(btnPesquisarAgenda, "cell 6 0 4 1,grow");
+		getContentPane().add(btnPesquisarAgenda, "cell 3 0,grow");
 		btnPesquisarAgenda.addActionListener(e -> {
-			
+
 			controller = new MedicoController();
-			
+
 			data = dateChooser.getDate();
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-			
+
 			ArrayList<MedicoVO> vo = controller.consultarData(data);
 			atualizarTabelaCarros(vo);
 
 		});
 
+		Object[][] data = new Object[][] { {  "Nome", "Data-Hora", "Telefone", "Médico", "Especialidade" }, };
+		Object[] columnNames = new String[] { "Nome", "Data-Hora", "Telefone", "Médico", "Especialidade" };
+
+		table = new JTable();
+		getContentPane().add(table, "cell 1 1 3 7,grow");
+		table.setModel(new DefaultTableModel(data, columnNames));
+
 
 
 		JButton btnAgendarConsulta = new JButton("Agendar Consulta");
-		getContentPane().add(btnAgendarConsulta, "cell 2 8 4 1,grow");
+		getContentPane().add(btnAgendarConsulta, "cell 1 9,grow");
 		btnAgendarConsulta.addActionListener(e -> {
+			
+			int row = table.getSelectedRow();
+			// TODO consultar no banco diretamente e atualizar a tabela. 
+			//dao.ConsultarJTableRow(row);
+			
 
 		});
 
+
 		JButton btnApagar = new JButton("Apagar Consulta");
-		getContentPane().add(btnApagar, "cell 6 8 4 1,grow");
+		getContentPane().add(btnApagar, "cell 2 9,grow");
 		btnApagar.addActionListener(e -> {
 
 
 		});
 
-		Object[][] data = new Object[][] { {  "Nome", "Data-Hora", "Telefone", "Médico", "Especialidade" }, };
-		Object[] columnNames = new String[] { "Nome", "Data-Hora", "Telefone", "Médico", "Especialidade" };
+		JButton btnConsultarPacienteSelecionado = new JButton("Consultar Paciente Selecionado");
+		getContentPane().add(btnConsultarPacienteSelecionado, "cell 3 9,grow");
+		btnConsultarPacienteSelecionado.addActionListener(e -> {
+			
+		});
 		
-		table = new JTable();
-		getContentPane().add(table, "cell 1 1 11 7,grow");
-		table.setModel(new DefaultTableModel(data, columnNames));
 		
 	}
-	
+
 	protected void atualizarTabelaCarros(ArrayList<MedicoVO> medicos) {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 
@@ -132,11 +140,11 @@ public class TelaMedico extends JFrame{
 			novaLinha[3] = medicoVO.getCliente().getTelefone();
 			novaLinha[4] = medicoVO.getNome();
 			novaLinha[5] = medicoVO.getEspecialidade();
-			
+
 			model.addRow(novaLinha);
 		}
 	}
-	
+
 	public void limparTela() {
 		table.setModel(new DefaultTableModel(
 				new Object[][] {{"Placa", "Modelo", "Ano", "Valor"}},
