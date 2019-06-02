@@ -3,7 +3,7 @@ package model.vo;
 public class Consulta {
 
 	private int idConsulta;
-	private Medico medico;
+	private MedicoVO medicoVO;
 	private Paciente paciente;
 	private String data_consulta;
 
@@ -11,10 +11,10 @@ public class Consulta {
 		super();
 	}
 
-	public Consulta(int idConsulta, Medico medico, Paciente paciente, String data_consulta) {
+	public Consulta(int idConsulta, MedicoVO medicoVO, Paciente paciente, String data_consulta) {
 		super();
 		this.idConsulta = idConsulta;
-		this.medico = medico;
+		this.medicoVO = medicoVO;
 		this.paciente = paciente;
 		this.data_consulta = data_consulta;
 	}
@@ -27,12 +27,12 @@ public class Consulta {
 		this.idConsulta = idConsulta;
 	}
 
-	public Medico getMedico() {
-		return this.medico;
+	public MedicoVO getMedico() {
+		return this.medicoVO;
 	}
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setMedico(MedicoVO medicoVO) {
+		this.medicoVO = medicoVO;
 	}
 
 	public Paciente getPaciente() {

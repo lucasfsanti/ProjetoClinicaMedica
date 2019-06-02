@@ -1,6 +1,5 @@
 package view.cliente;
 
-
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -13,7 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 
-public class PainelListagemCliente extends JInternalFrame {
+public class TelaInternaCadastrarHorario extends JInternalFrame {
 
 	private JTextField txtNome;
 	private JTextField txtCPF_CPNPJ;
@@ -24,10 +23,9 @@ public class PainelListagemCliente extends JInternalFrame {
 	private JMenuItem mntmCadastrarHorario;
 	private JMenuItem mntmExcluirHorario;
 
-	public PainelListagemCliente() {
-		setBounds(100, 100, 450, 341);
-		getContentPane().setLayout(new MigLayout("", "[81px][10px][166px][10px][106px][10px][191px]",
-				"[24px][21px][33px][313px,grow,fill]"));
+	public TelaInternaCadastrarHorario() {
+		setBounds(100, 100, 678, 594);
+		getContentPane().setLayout(new MigLayout("", "[81px][10px][166px][10px][106px][10px][191px]", "[24px][21px][33px][313px,grow,fill][grow]"));
 
 		JLabel lblNome = new JLabel("Nome:");
 		getContentPane().add(lblNome, "cell 0 0,grow");
@@ -50,11 +48,10 @@ public class PainelListagemCliente extends JInternalFrame {
 		txtDtNascimento.setColumns(10);
 		getContentPane().add(txtDtNascimento, "cell 6 0,grow");
 
-		Object[][] data = new Object[][] { { "#", "Nome", "CPF", "Email", "Telefone" }, };
-		Object[] columnNames = new String[] { "#", "Nome", "CPF", "Email", "Telefone" };
+		Object[][] data = new Object[][] { {"Nome", "CPF", "Email", "Telefone" }, };
+		Object[] columnNames = new String[] {"Nome", "CPF", "Email", "Telefone" };
 
 		btnFechar = new JButton("Fechar");
-		
 		getContentPane().add(btnFechar, "cell 6 2,grow");
 
 		table = new JTable();
@@ -62,20 +59,20 @@ public class PainelListagemCliente extends JInternalFrame {
 		table.setModel(new DefaultTableModel(data, columnNames));
 
 		JButton btnPesquisar = new JButton("PESQUISAR");
-		btnPesquisar.addActionListener(e -> {
-
-		});
 		getContentPane().add(btnPesquisar, "cell 0 2 5 1,grow");
+		btnPesquisar.addActionListener(e -> {
+			
+		});
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
 		mntmCadastrarHorario = new JMenuItem("Cadastrar Horario");
-		mntmCadastrarHorario.setIcon(new ImageIcon(PainelListagemCliente.class.getResource("/src/icones/icons8-hora-extra-48.png")));
+		mntmCadastrarHorario.setIcon(new ImageIcon(TelaInternaCadastrarHorario.class.getResource("/icones/icons8-hora-extra-48.png")));
 		menuBar.add(mntmCadastrarHorario);
 		
 		mntmExcluirHorario = new JMenuItem("Excluir Horario");
-		mntmExcluirHorario.setIcon(new ImageIcon(PainelListagemCliente.class.getResource("/src/icones/icons8-passado-16.png")));
+		mntmExcluirHorario.setIcon(new ImageIcon(TelaInternaCadastrarHorario.class.getResource("/icones/icons8-passado-48.png")));
 		menuBar.add(mntmExcluirHorario);
 	}
 

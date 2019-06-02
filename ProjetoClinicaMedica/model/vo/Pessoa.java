@@ -9,10 +9,6 @@ public abstract class Pessoa {
 	private String email;
 	private Endereco endereco;
 
-	public Pessoa() {
-		super();
-	}
-
 	public Pessoa(String nome, String cpf, String telefone, String celular, String email, Endereco endereco) {
 		super();
 		this.nome = nome;
@@ -21,6 +17,10 @@ public abstract class Pessoa {
 		this.celular = celular;
 		this.email = email;
 		this.endereco = endereco;
+	}
+	
+	public Pessoa() {
+		super();
 	}
 
 	public String getNome() {
@@ -71,6 +71,10 @@ public abstract class Pessoa {
 		this.endereco = endereco;
 	}
 
-	public abstract String toString();
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", celular=" + celular + ", email="
+				+ email + ", endereco=" + endereco + "]";
+	}
 
 }

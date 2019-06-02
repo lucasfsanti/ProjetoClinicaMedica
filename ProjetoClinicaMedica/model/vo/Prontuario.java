@@ -3,7 +3,7 @@ package model.vo;
 public class Prontuario {
 
 	private int idProntuario;
-	private Medico medico;
+	private MedicoVO medicoVO;
 	private Paciente paciente;
 	private String anamnese;
 	private String laudo;
@@ -15,11 +15,11 @@ public class Prontuario {
 		super();
 	}
 
-	public Prontuario(int idProntuario, Medico medico, Paciente paciente, String anamnese, String laudo,
+	public Prontuario(int idProntuario, MedicoVO medicoVO, Paciente paciente, String anamnese, String laudo,
 			String diagnostico, String prescricao, String atestado) {
 		super();
 		this.idProntuario = idProntuario;
-		this.medico = medico;
+		this.medicoVO = medicoVO;
 		this.paciente = paciente;
 		this.anamnese = anamnese;
 		this.laudo = laudo;
@@ -36,12 +36,12 @@ public class Prontuario {
 		this.idProntuario = idProntuario;
 	}
 
-	public Medico getMedico() {
-		return this.medico;
+	public MedicoVO getMedico() {
+		return this.medicoVO;
 	}
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setMedico(MedicoVO medicoVO) {
+		this.medicoVO = medicoVO;
 	}
 
 	public Paciente getPaciente() {
