@@ -5,27 +5,18 @@ public class Prontuario {
 	private int idProntuario;
 	private Medico medico;
 	private Paciente paciente;
-	private String anamnese;
-	private String laudo;
-	private String diagnostico;
-	private String prescricao;
-	private String atestado;
+	private String observacoes;
 
 	public Prontuario() {
 		super();
 	}
 
-	public Prontuario(int idProntuario, Medico medico, Paciente paciente, String anamnese, String laudo,
-			String diagnostico, String prescricao, String atestado) {
+	public Prontuario(int idProntuario, Medico medico, Paciente paciente, String observacoes) {
 		super();
 		this.idProntuario = idProntuario;
 		this.medico = medico;
 		this.paciente = paciente;
-		this.anamnese = anamnese;
-		this.laudo = laudo;
-		this.diagnostico = diagnostico;
-		this.prescricao = prescricao;
-		this.atestado = atestado;
+		this.observacoes = observacoes;
 	}
 
 	public int getIdProntuario() {
@@ -52,44 +43,12 @@ public class Prontuario {
 		this.paciente = paciente;
 	}
 
-	public String getAnamnese() {
-		return this.anamnese;
+	public String getObservacoes() {
+		return this.observacoes;
 	}
 
-	public void setAnamnese(String anamnese) {
-		this.anamnese = anamnese;
-	}
-
-	public String getLaudo() {
-		return this.laudo;
-	}
-
-	public void setLaudo(String laudo) {
-		this.laudo = laudo;
-	}
-
-	public String getDiagnostico() {
-		return this.diagnostico;
-	}
-
-	public void setDiagnostico(String diagnostico) {
-		this.diagnostico = diagnostico;
-	}
-
-	public String getPrescricao() {
-		return this.prescricao;
-	}
-
-	public void setPrescricao(String prescricao) {
-		this.prescricao = prescricao;
-	}
-
-	public String getAtestado() {
-		return this.atestado;
-	}
-
-	public void setAtestado(String atestado) {
-		this.atestado = atestado;
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
 	}
 
 }

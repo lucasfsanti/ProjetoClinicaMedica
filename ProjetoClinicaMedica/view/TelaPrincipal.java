@@ -7,10 +7,7 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -19,12 +16,12 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
+import model.vo.Medico;
 import net.miginfocom.swing.MigLayout;
 import view.cliente.PainelListagemCliente;
 import view.cliente.TelaInternaAtualizarCliente;
@@ -38,9 +35,10 @@ public class TelaPrincipal extends JFrame {
 	private TelaInternaAtualizarCliente janelinhaAtualizarCliente = new TelaInternaAtualizarCliente();
 	private PainelListagemCliente painelListagemCliente = new PainelListagemCliente();
 	private TelaInternaRelatorioCliente janelinhaRelatorioCliente = new TelaInternaRelatorioCliente();
-	
+	private Medico medico;
+
 	private ArrayList<Component> componentesDaTela = new ArrayList<Component>();
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -76,7 +74,8 @@ public class TelaPrincipal extends JFrame {
 		menuBar.add(mnCliente);
 
 		JMenuItem jmiCadastrarCliente = new JMenuItem("Cadastrar");
-		jmiCadastrarCliente.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-usuário-masculino.png")));
+		jmiCadastrarCliente.setIcon(
+				new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-usuário-masculino.png")));
 		jmiCadastrarCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
 		jmiCadastrarCliente.addActionListener(e -> {
 			adicionarInternalFrame(janelinhaCadastroCliente);
@@ -84,7 +83,8 @@ public class TelaPrincipal extends JFrame {
 		mnCliente.add(jmiCadastrarCliente);
 
 		JMenuItem jmiAtualizarCliente = new JMenuItem("Atualizar");
-		jmiAtualizarCliente.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-ao-banco-de-dados.png")));
+		jmiAtualizarCliente.setIcon(
+				new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-ao-banco-de-dados.png")));
 		jmiAtualizarCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0));
 		jmiAtualizarCliente.addActionListener(e -> {
 			adicionarInternalFrame(janelinhaAtualizarCliente);
@@ -100,7 +100,8 @@ public class TelaPrincipal extends JFrame {
 		mnCliente.add(mntmListar);
 
 		JMenuItem jmiRelatorioCliente = new JMenuItem("Relatorio");
-		jmiRelatorioCliente.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-imprimir-arquivo.png")));
+		jmiRelatorioCliente
+				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-imprimir-arquivo.png")));
 		jmiRelatorioCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F10, 0));
 		jmiRelatorioCliente.addActionListener(e -> {
 
@@ -129,7 +130,8 @@ public class TelaPrincipal extends JFrame {
 		mnProduto.add(jmiCadastrarProduto);
 
 		JMenuItem jmiAtualizarProduto = new JMenuItem("Atualizar");
-		jmiAtualizarProduto.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-ao-banco-de-dados.png")));
+		jmiAtualizarProduto.setIcon(
+				new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-ao-banco-de-dados.png")));
 		jmiAtualizarProduto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, InputEvent.CTRL_MASK));
 		jmiAtualizarProduto.addActionListener(e -> {
 
@@ -159,7 +161,8 @@ public class TelaPrincipal extends JFrame {
 		menuBar.add(mnFuncionario);
 
 		JMenuItem jmiCadastrarFuncionario = new JMenuItem("Cadastrar");
-		jmiCadastrarFuncionario.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-usuário-masculino.png")));
+		jmiCadastrarFuncionario.setIcon(
+				new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-usuário-masculino.png")));
 		jmiCadastrarFuncionario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, InputEvent.SHIFT_MASK));
 		jmiCadastrarFuncionario.addActionListener(e -> {
 
@@ -172,7 +175,8 @@ public class TelaPrincipal extends JFrame {
 		mnFuncionario.add(jmiCadastrarFuncionario);
 
 		JMenuItem jmiAtualizarFuncionario = new JMenuItem("Atualizar");
-		jmiAtualizarFuncionario.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-ao-banco-de-dados.png")));
+		jmiAtualizarFuncionario.setIcon(
+				new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-adicionar-ao-banco-de-dados.png")));
 		jmiAtualizarFuncionario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, InputEvent.SHIFT_MASK));
 		jmiAtualizarFuncionario.addActionListener(e -> {
 
@@ -185,7 +189,8 @@ public class TelaPrincipal extends JFrame {
 		mnFuncionario.add(jmiAtualizarFuncionario);
 
 		JMenuItem jmiListarFuncionario = new JMenuItem("Listar");
-		jmiListarFuncionario.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-confiança.png")));
+		jmiListarFuncionario
+				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/src/icones/icons8-confiança.png")));
 		jmiListarFuncionario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, InputEvent.SHIFT_MASK));
 		jmiListarFuncionario.addActionListener(e -> {
 
@@ -222,13 +227,13 @@ public class TelaPrincipal extends JFrame {
 
 	private void adicionarPainel(JInternalFrame janelinha) {
 
-		//TODO continuar
+		// TODO continuar
 		if (janelinha == null) {
 			painelListagemCliente = new PainelListagemCliente();
 			getContentPane().add(painelListagemCliente);
 			painelListagemCliente.setVisible(true);
 			painelListagemCliente.show();
-			
+
 			painelListagemCliente.getBtnFechar().addActionListener(evt -> {
 				getContentPane().remove(painelListagemCliente);
 				painelListagemCliente = null;
@@ -252,5 +257,13 @@ public class TelaPrincipal extends JFrame {
 				fecharJanelinha(evt.getInternalFrame());
 			}
 		});
+	}
+
+	public Medico getMedico() {
+		return this.medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 }

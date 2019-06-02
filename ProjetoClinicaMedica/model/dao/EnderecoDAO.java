@@ -9,7 +9,6 @@ import java.sql.Statement;
 import model.Banco;
 import model.vo.Endereco;
 
-
 public class EnderecoDAO {
 
 	public int cadastrarEndereco(Endereco endereco) {
@@ -41,6 +40,43 @@ public class EnderecoDAO {
 		}
 
 		return novoId;
+	}
+
+	public Endereco pesquisarPorId(int idEndereco) {
+		Endereco endereco = null;
+		String query = "SELECT * FROM ENDERECO WHERE IDENDERECO = " + idEndereco;
+
+		Connection conn = Banco.getConnection();
+		PreparedStatement prepStmt = Banco.getPreparedStatement(conn, query);
+
+		try {
+			ResultSet resultado = prepStmt.executeQuery();
+			if (resultado.next()) {
+				endereco = this.criarEndereco(resultado);
+			}
+			prepStmt.close();
+		} catch (SQLException e) {
+			System.out.println("Erro ao pesquisar Endereço por ID: \n" + e.getMessage());
+		} finally {
+			Banco.closePreparedStatement(prepStmt);
+			Banco.closeConnection(conn);
+		}
+		return endereco;
+	}
+
+	private Endereco criarEndereco(ResultSet resultado) {
+		Endereco endereco = null;
+		try {
+			endereco.setRua(resultado.getString("RUA"));
+			endereco.setNumero(resultado.getInt("NUMERO"));
+			endereco.setBairro(resultado.getString("BAIRRO"));
+			endereco.setCidade(resultado.getString("CIDADE"));
+			endereco.setEstado(resultado.getString("ESTADO"));
+			endereco.setCep(resultado.getString("CEP"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return endereco;
 	}
 
 }

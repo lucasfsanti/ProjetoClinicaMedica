@@ -2,8 +2,8 @@ package view;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,17 +11,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 
 import controller.MedicoController;
+import model.vo.Medico;
+import net.miginfocom.swing.MigLayout;
 
-public class TelaDeLogin extends JFrame{
+public class TelaDeLogin extends JFrame {
 
 	private JPasswordField passwordField;
 	private JTextField txtUsuario;
-	private	SpringLayout springLayout;
-	
+
 	private JButton btnLogin;
+	private JButton btnCadastrarUsuario;
 
 	/**
 	 * Launch the application.
@@ -43,11 +44,9 @@ public class TelaDeLogin extends JFrame{
 	 * Create the application.
 	 */
 	public TelaDeLogin() {
-		setTitle("Clinica M\u00E9dica");
+		setTitle("Clinica Médica");
 		setBounds(100, 100, 450, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		springLayout = new SpringLayout();
-		getContentPane().setLayout(springLayout);
 		initialize();
 	}
 
@@ -55,67 +54,57 @@ public class TelaDeLogin extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		getContentPane()
+				.setLayout(new MigLayout("", "[64px][183px][][][][][][][][][]", "[28px][25px][29px][][][][][]"));
 
-		JLabel lblUsuario = new JLabel("Usu\u00E1rio:");
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		springLayout.putConstraint(SpringLayout.NORTH, lblUsuario, 71, SpringLayout.NORTH,
-				getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, lblUsuario, 183, SpringLayout.WEST,
-				getContentPane());
-		getContentPane().add(lblUsuario);
-
-		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		springLayout.putConstraint(SpringLayout.WEST, lblUsuario, 0, SpringLayout.WEST, lblSenha);
-		getContentPane().add(lblSenha);
-
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		springLayout.putConstraint(SpringLayout.NORTH, lblSenha, 3, SpringLayout.NORTH, passwordField);
-		springLayout.putConstraint(SpringLayout.EAST, passwordField, -100, SpringLayout.EAST,
-				getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, lblSenha, -58, SpringLayout.WEST, passwordField);
-		getContentPane().add(passwordField);
-
-		btnLogin = new JButton("Login");
-		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		springLayout.putConstraint(SpringLayout.NORTH, passwordField, -100, SpringLayout.SOUTH, btnLogin);
-		springLayout.putConstraint(SpringLayout.WEST, passwordField, -60, SpringLayout.EAST, btnLogin);
-		springLayout.putConstraint(SpringLayout.WEST, btnLogin, 150, SpringLayout.WEST,
-				getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, btnLogin, -50, SpringLayout.SOUTH,
-				getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, btnLogin, -150, SpringLayout.EAST,
-				getContentPane());
-		getContentPane().add(btnLogin);
-		btnLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				MedicoController controller = new MedicoController();
-				String usuario = txtUsuario.getText();
-				String senha = new String(passwordField.getPassword());
-				if (controller.login(usuario, senha)) {
-					JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
-					
-					//TODO chamar a tela principal
-					TelaPrincipal telaPrincipal = new TelaPrincipal();
-					getContentPane().add(telaPrincipal);
-					telaPrincipal.setVisible(true);
-					telaPrincipal.show();
-					
-					
-				} else {
-					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inv�lidos.");
-				}
+		btnCadastrarUsuario = new JButton("Cadastrar Usuário");
+		btnCadastrarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroMedico telaCadastroMedico = new TelaCadastroMedico();
 			}
 		});
 
+		JLabel lblUsuario = new JLabel("Usuário:");
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		getContentPane().add(lblUsuario, "cell 1 1,alignx center,aligny bottom");
+
 		txtUsuario = new JTextField();
 		txtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		springLayout.putConstraint(SpringLayout.WEST, txtUsuario, 39, SpringLayout.EAST, lblUsuario);
-		springLayout.putConstraint(SpringLayout.SOUTH, txtUsuario, -16, SpringLayout.NORTH, passwordField);
-		springLayout.putConstraint(SpringLayout.EAST, txtUsuario, 149, SpringLayout.EAST, lblUsuario);
-		getContentPane().add(txtUsuario);
+		getContentPane().add(txtUsuario, "cell 3 1,growx,aligny top");
 		txtUsuario.setColumns(10);
+
+		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		getContentPane().add(lblSenha, "flowx,cell 1 3,alignx center,aligny center");
+
+		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		getContentPane().add(passwordField, "cell 3 3,growx,aligny top");
+		btnCadastrarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		getContentPane().add(btnCadastrarUsuario, "cell 1 6");
+
+		btnLogin = new JButton("Login");
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		getContentPane().add(btnLogin, "cell 3 6,growx,aligny top");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MedicoController controller = new MedicoController();
+				String usuario = txtUsuario.getText();
+				String senha = new String(passwordField.getPassword());
+				Medico medico = controller.login(usuario, senha);
+				if (medico != null) {
+					JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
+
+					TelaPrincipal telaPrincipal = new TelaPrincipal();
+					telaPrincipal.setMedico(medico);
+					getContentPane().add(telaPrincipal);
+					telaPrincipal.setVisible(true);
+					telaPrincipal.show();
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos.");
+				}
+			}
+		});
 	}
 }

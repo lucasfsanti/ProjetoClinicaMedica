@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.Banco;
+import model.vo.Endereco;
 import model.vo.Medico;
 
 public class MedicoDAO {
@@ -108,10 +109,10 @@ public class MedicoDAO {
 		return sucessoDelete;
 	}
 
-	public boolean login(String usuario, String senha) {
-		boolean sucessoLogin = false;
+	public Medico login(String usuario, String senha) {
+		Medico medico = null;
 
-		String query = "SELECT IDMEDICO, ADMIN FROM MEDICO WHERE USUARIO = ? " + "AND SENHA = ?";
+		String query = "SELECT * FROM MEDICO WHERE USUARIO = ? " + "AND SENHA = ?";
 
 		Connection conn = Banco.getConnection();
 		PreparedStatement prepStmt = Banco.getPreparedStatement(conn, query);
@@ -122,8 +123,9 @@ public class MedicoDAO {
 			ResultSet result = prepStmt.executeQuery();
 
 			if (result.next()) {
-				sucessoLogin = true;
+				medico = this.criarMedico(result);
 			}
+			prepStmt.close();
 		} catch (SQLException e) {
 			System.out.println("Erro ao efetuar login: " + e.getMessage());
 		} finally {
@@ -131,6 +133,32 @@ public class MedicoDAO {
 			Banco.closeConnection(conn);
 		}
 
-		return sucessoLogin;
+		return medico;
+	}
+
+	private Medico criarMedico(ResultSet resultado) {
+		Medico medico = null;
+		try {
+			medico = new Medico();
+			medico.setIdMedico(resultado.getInt("IDMEDICO"));
+			medico.setNome(resultado.getString("NOME"));
+			medico.setCpf(resultado.getString("CPF"));
+			medico.setTelefone(resultado.getString("TELEFONE"));
+			medico.setCelular(resultado.getString("CELULAR"));
+			medico.setEmail(resultado.getString("EMAIL"));
+			medico.setCrm(resultado.getString("CRM"));
+			medico.setEspecialidade(resultado.getString("ESPECIALIDADE"));
+			medico.setUsuario(resultado.getString("USUARIO"));
+			medico.setSenha(resultado.getString("SENHA"));
+			medico.setAdmin(resultado.getBoolean("ADMIN"));
+
+			int idEndereco = resultado.getInt("IDENDERECO");
+			EnderecoDAO enderecoDAO = new EnderecoDAO();
+			Endereco endereco = enderecoDAO.pesquisarPorId(idEndereco);
+			medico.setEndereco(endereco);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return medico;
 	}
 }
