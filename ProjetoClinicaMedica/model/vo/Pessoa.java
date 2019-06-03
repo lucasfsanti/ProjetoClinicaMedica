@@ -7,20 +7,18 @@ public abstract class Pessoa {
 	private String telefone;
 	private String celular;
 	private String email;
-	private Endereco endereco;
 
 	public Pessoa() {
 		super();
 	}
 
-	public Pessoa(String nome, String cpf, String telefone, String celular, String email, Endereco endereco) {
+	public Pessoa(String nome, String cpf, String telefone, String celular, String email) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.celular = celular;
 		this.email = email;
-		this.endereco = endereco;
 	}
 
 	public String getNome() {
@@ -61,14 +59,6 @@ public abstract class Pessoa {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Endereco getEndereco() {
-		return this.endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 
 	public abstract String toString();

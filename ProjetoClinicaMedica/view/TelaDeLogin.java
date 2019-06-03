@@ -22,7 +22,7 @@ public class TelaDeLogin extends JFrame {
 	private JTextField txtUsuario;
 
 	private JButton btnLogin;
-	private JButton btnCadastrarUsuario;
+	private JButton btnNovoUsuario;
 
 	/**
 	 * Launch the application.
@@ -57,10 +57,11 @@ public class TelaDeLogin extends JFrame {
 		getContentPane()
 				.setLayout(new MigLayout("", "[64px][183px][][][][][][][][][]", "[28px][25px][29px][][][][][]"));
 
-		btnCadastrarUsuario = new JButton("Cadastrar Usuário");
-		btnCadastrarUsuario.addActionListener(new ActionListener() {
+		btnNovoUsuario = new JButton("Novo Usuário");
+		btnNovoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroMedico telaCadastroMedico = new TelaCadastroMedico();
+				telaCadastroMedico.setVisible(true);
 			}
 		});
 
@@ -70,7 +71,7 @@ public class TelaDeLogin extends JFrame {
 
 		txtUsuario = new JTextField();
 		txtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		getContentPane().add(txtUsuario, "cell 3 1,growx,aligny top");
+		getContentPane().add(txtUsuario, "cell 2 1 2 1,growx,aligny top");
 		txtUsuario.setColumns(10);
 
 		JLabel lblSenha = new JLabel("Senha:");
@@ -79,9 +80,9 @@ public class TelaDeLogin extends JFrame {
 
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		getContentPane().add(passwordField, "cell 3 3,growx,aligny top");
-		btnCadastrarUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		getContentPane().add(btnCadastrarUsuario, "cell 1 6");
+		getContentPane().add(passwordField, "cell 2 3 2 1,growx,aligny top");
+		btnNovoUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		getContentPane().add(btnNovoUsuario, "cell 1 6,aligny center");
 
 		btnLogin = new JButton("Login");
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
